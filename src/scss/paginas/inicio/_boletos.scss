@@ -1,0 +1,153 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.boletos {
+    
+    &__grid{
+        @include m.contenedor-sm;
+        @include m.grid(1, 5rem);
+        padding: 1rem;
+    }
+}
+
+.boleto {
+
+    width: clamp( 15rem, 100%, 30rem);
+    aspect-ratio: 1 / 2;
+    margin: 0 auto;
+    border-radius: 2rem;
+    color: v.$blanco;
+    position: relative;
+    //padding: 6rem;
+    //height: 35rem;
+    //@include m.tablet {
+    //    padding: 6rem;
+    //    height: 30rem;
+    //}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    //width: 30rem;
+    max-height: 50rem;
+    padding: 10rem 3rem;
+    @include m.tablet {
+        width: 60rem;
+        height: 30rem;
+        padding: 5rem;
+    }
+
+    &::before, &::after{
+        position: absolute;
+        content: '';
+        background-color: v.$blanco;
+        width: 5rem;
+        height: 5rem;
+    }
+
+    &--presencial{
+        background-color:hsla(178,100%,39%,1);
+        background-image:
+        radial-gradient(at 76% 12%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 83% 81%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 41% 35%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 61% 66%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 42% 63%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 84% 56%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 7% 24%, hsla(209,100%,47%,1) 0px, transparent 50%);
+    }
+    &--virtual{
+        background-color: v.$secundario;
+    }
+    &--gratis{
+        background-color: v.$azul;
+    }
+    &__logo{
+        margin: 0;
+        @include m.logo;
+        @include m.texto-fluido(2rem,3rem);
+        text-align: center;
+    }
+    &__plan{
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin: 3rem 0 0 0;
+        text-align: center;
+    }
+    &__precio{
+        font-size: 4rem;
+        margin: 3rem 0 0 0;
+        font-weight: v.$black;
+        text-align: center;
+    }
+    &__enlace-contenedor{
+        margin-top: 5rem;
+        display: flex;
+        justify-content: center;
+    }
+    &__enlace{
+        @include m.boton(v.$azul, v.$blanco);
+        width: auto;
+    }
+    &::before{
+        clip-path: circle(50% at 50% 25%);
+        left: calc(50% - 2.5rem);
+        top: 0;
+        @include m.tablet {
+            clip-path: circle(50% at 25% 50%);
+            left: 0;
+            top: calc(50% - 2.5rem);
+
+        }
+    }
+    &::after{
+        clip-path: circle(50% at 50% 75%);
+        left: calc(50% - 2.5rem);
+        top: calc(100% - 5rem);
+        @include m.tablet {
+            clip-path: circle(50% at 75% 50%);
+            left: calc(100% - 5rem);
+            top: calc(50% - 2.5rem);
+        }
+    }
+    
+    $modificador: &;
+    &--acceso{ 
+        #{$modificador}__logo{
+            @include m.tablet {
+                text-align: left;                
+            }
+        }
+        #{$modificador}__nombre{
+            font-size: 2.4rem;
+            text-transform: uppercase;
+            font-weight: v.$black;
+            text-align: center;
+            @include m.tablet {
+                text-align: left;
+            }
+        }
+        #{$modificador}__plan{
+            text-align: center;
+            @include m.tablet {
+                text-align: left;
+            }
+        }
+        #{$modificador}__codigo{
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+            position: absolute;
+            bottom: 7rem;
+            margin: 0;
+            left: 0;
+            width: 100%;
+            @include m.tablet {
+                rotate: 90deg;
+                transform-origin: 0 0;
+                top: 0;
+                left: calc(100% - 5rem);
+                width: 30rem;
+            }
+        }
+    }
+}

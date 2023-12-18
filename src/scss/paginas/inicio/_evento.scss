@@ -1,0 +1,105 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.ponencia {
+    
+    @include m.contenedor-md;
+    
+    &__descripcion{
+        margin-bottom: 1rem;
+    }
+    &__contenedor-boton {
+        
+        @include m.tablet {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+    &__boton {
+        @include m.boton(v.$azul, v.$blanco);
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+        @include m.tablet {
+            width: auto;
+        }
+    }
+    &__inf{
+        padding: 2rem;
+        margin: 1rem 0 0 0;
+        border: 1px solid v.$gris;
+        border-radius: 1rem;
+    }
+    &__titulo{
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    &__tipo{
+        margin-top: 0;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: v.$gris;
+    }
+    &__contenedor-diahora{
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    &__dia, &__hora{
+        margin: 0;
+        text-align: center;
+        span{
+            font-weight: bold;
+        }
+    }
+    &__descripcion{
+        margin-top: 0;
+        margin-bottom: 1rem;
+        text-align: center;
+        line-height: 1.5;
+    }
+    &__autor{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        &--grid{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    &__imagen-autor{
+        width: 30rem;
+        background-color: v.$blanco;
+        border-radius: 1rem;
+    }
+    &__autor-nombre, &__autor-lugar{
+        font-weight: v.$bold;
+        text-align: center;
+    }
+    &__listado-skills{
+        @include m.tags;
+        margin: 1.8rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+.ponencia-redes {
+    @include m.menu-social(v.$negro, 3rem);
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.8rem 0;
+    
+}

@@ -1,0 +1,16 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.acciones {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    &--centrar {
+        justify-content: center;
+    }
+    &__enlace {
+        color: v.$negro;
+        font-size: 1.6rem;
+        font-weight: v.$delgada;
+    }
+}
